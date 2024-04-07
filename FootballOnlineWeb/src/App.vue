@@ -8,8 +8,6 @@
 
 <style>
 /* 声明全局样式和项目的初始化样式 */
-//不同浏览器差异化配置
-
 body,h1,h2,h3,h4,p,table,tr,td,ul,li,a,form,input,select,option,textarea{
   margin:0;
   padding: 0;
