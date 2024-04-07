@@ -5,7 +5,7 @@ const routes = [
 {
     meta:{
         title: "球学Online学习平台--首页",
-        keepAlive: true //创建缓存：加速访问
+        keepAlive: false //创建缓存：加速访问
     },
     path: '/',         // uri访问地址
     name: "Home",
@@ -14,7 +14,7 @@ const routes = [
   {
     meta:{
         title: "球学Online学习平台--用户登陆",
-        keepAlive: true
+        keepAlive: false
     },
     path:'/login',      // uri访问地址
     name: "Login",
