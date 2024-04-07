@@ -16,6 +16,9 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE_DIR / "apps"))
 
+# 因为项目中子应用已经换了存储目录，所以需要把apps设置为系统导包路径，方便我们后面开发时可以简写子应用相关的导包路径。
+sys.path.insert(0, str(BASE_DIR / "utils"))
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
