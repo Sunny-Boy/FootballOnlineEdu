@@ -21,7 +21,7 @@
             </div>
             <div class="showhide-search" data-show="no"><img class="imv2-search2" src="../assets/search.svg" /></div>
           </div>
-          <div class="login-bar logined-bar" v-show="state.is_login">
+          <div class="login-bar logined-bar" v-show="store.state.user.user_id">
             <div class="shop-cart ">
               <img src="../assets/cart.svg" alt="" />
               <span><router-link to="/cart">购物车</router-link></span>
@@ -37,13 +37,13 @@
                     <el-dropdown-item :icon="UserFilled">学习中心</el-dropdown-item>
                     <el-dropdown-item :icon="List">订单列表</el-dropdown-item>
                     <el-dropdown-item :icon="Setting">个人设置</el-dropdown-item>
-                    <el-dropdown-item :icon="Position">注销登录</el-dropdown-item>
+                    <el-dropdown-item :icon="Position" @click="logout">注销登录</el-dropdown-item>
                   </el-dropdown-menu>
                 </template>
               </el-dropdown>
             </div>
           </div>
-          <div class="login-bar" v-show="!state.is_login">
+          <div class="login-bar" v-show="!store.state.user.user_id">
             <div class="shop-cart full-left">
               <img src="../assets/cart.svg" alt="" />
               <span><router-link to="/cart">购物车</router-link></span>
@@ -68,11 +68,12 @@ import {UserFilled, List, Setting, Position} from '@element-plus/icons-vue'
 import Login from "./Login.vue"
 import {reactive} from "vue";
 import nav from "../api/nav";
+
 import {useStore} from "vuex"
 const store = useStore()
 
 const state = reactive({
-  is_login: true,  // 登录状态
+  // is_login: true,  // 登录状态
   show_login: false,
 })
 
@@ -91,6 +92,9 @@ nav.get_header_nav().then(response=>{
 // 用户登录成功以后的处理
 const login_success = ()=>{
   state.show_login = false
+}
+const logout = ()=>{
+  store.commit("logout");
 }
 
 </script>

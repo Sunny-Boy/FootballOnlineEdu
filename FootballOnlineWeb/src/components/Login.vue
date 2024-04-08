@@ -31,6 +31,10 @@ import user from "../api/user";
 import { ElMessage } from 'element-plus'
 const emit = defineEmits(["successhandle",])
 
+import {useStore} from "vuex"
+const store = useStore()
+
+
 // 登录处理
 const loginhandler = ()=>{
   if(user.account.length<1 || user.password.length<1){
