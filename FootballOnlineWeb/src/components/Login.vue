@@ -26,28 +26,51 @@
   </div>
 </template>
 
-
-
 <script setup>
 import user from "../api/user";
 import { ElMessage } from 'element-plus'
+const emit = defineEmits(["successhandle",])
 
 // 登录处理
 const loginhandler = ()=>{
-  // 验证数据
   if(user.account.length<1 || user.password.length<1){
     // 错误提示
     console.log("错了哦，用户名或密码不能为空！");
-    ElMessage.error("错了哦，用户名或密码不能为空！");
-    return ;
+    ElMessage.error('错了哦，用户名或密码不能为空！');
+    return;  // 在函数/方法中，可以阻止代码继续往下执行
   }
 
-  // 登录请求处理
-  user.login().then(response=>{
-    console.log(response.data);
+  // 发送请求
+  user.login({
+    username: user.account,
+    password: user.password
+  }).then(response=>{
+    // 保存token，并根据用户的选择，是否记住密码
+    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
+    console.log(response.data.token);
+    if(user.remember){ // 判断是否记住登录状态
+      // 记住登录
+      localStorage.token = response.data.token
+    }else{
+      // 不记住登录，关闭浏览器以后就删除状态
+      sessionStorage.token = response.data.token;
+    }
+    // 保存token，并根据用户的选择，是否记住密码
+    // 成功提示
     ElMessage.success("登录成功！");
+    user.account = ""
+    user.password = ""
+    user.mobile = ""
+    user.code = ""
+    user.remember = false
+    emit("successhandle")
+
+    console.log("登录成功！");
+    // 关闭登录弹窗
   }).catch(error=>{
     ElMessage.error("登录失败！");
+    console.log(error);
   })
 }
 
