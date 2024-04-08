@@ -14,7 +14,7 @@ const routes = [
   {
     meta:{
         title: "球学Online学习平台--用户登陆",
-        keepAlive: false
+        keepAlive: true
     },
     path:'/login',      // uri访问地址
     name: "Login",
