@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',  # cors跨域子应用
 
     "home",
+    "users"
 
 ]
 
@@ -260,3 +261,5 @@ REST_FRAMEWORK = {
     # 自定义异常处理
     'EXCEPTION_HANDLER': 'FootballOnlineApi.utils.exceptions.custom_exception_handler',
 }
+
+AUTH_USER_MODEL = 'users.User'
