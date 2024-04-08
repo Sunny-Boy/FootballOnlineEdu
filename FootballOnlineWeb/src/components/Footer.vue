@@ -1,12 +1,12 @@
 <template>
     <div class="footer">
-      <ul>
+      <ul >
         <li v-for="nav in nav.footer_nav_list">
-          <a :href="nav.link" v-if="nav.is_http">{{nav.name}}</a>
-          <router-link :to="nav.link" v-else>{{nav.name}}</router-link>
+          <a :href="nav.link" v-if="nav.is_http" class="color-a" >{{nav.name}}</a>
+          <router-link :to="nav.link" v-else class="color-a">{{nav.name}}</router-link>
         </li>
       </ul>
-      <p>Copyright © luffycity.com版权所有 | 京ICP备17072161号-1</p>
+      <p>Copyright © footballOnline.com版权所有 | 京ICP备1231312 </p>
     </div>
 </template>
 
@@ -21,22 +21,28 @@ nav.get_footer_nav().then(response=>{
 </script>
 
 <style scoped>
+.color-a{
+  color: #f0f0f0;
+}
 .footer {
   width: 100%;
-  height: 128px;
-  color: #545C63;
+  height: 100px;
+  color: #f0f0f0;
+  background-color: black;
 }
 .footer ul{
   margin: 0 auto 16px;
-  padding-top: 38px;
+  padding-top: 30px;
   width: 930px;
+
 }
 .footer ul li{
   float: left;
-  width: 112px;
+  width: 128px;
   margin: 0 10px;
   text-align: center;
   font-size: 14px;
+
 }
 .footer ul::after{
   content:"";
