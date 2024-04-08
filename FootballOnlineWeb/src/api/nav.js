@@ -6,11 +6,11 @@ const nav = reactive({
     footer_nav_list: [], // 脚部导航列表
     get_header_nav(){
         // 获取头部导航
-        return http.get("/home/nav/header/")
+        return http.get("/nav/header/")
     },
     get_footer_nav(){
         // 获取脚部导航
-        return http.get("/home/nav/footer/")
+        return http.get("/nav/footer/")
     },
 
 })

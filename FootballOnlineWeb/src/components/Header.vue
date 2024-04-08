@@ -37,7 +37,6 @@
     </div>
 </template>
 
-
 <script setup>
 import nav from "../api/nav";
 
@@ -48,7 +47,6 @@ nav.get_header_nav().then(response=>{
 
 
 </script>
-
 <style scoped>
 .header-box{
   height: 72px;
