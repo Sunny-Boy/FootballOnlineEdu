@@ -279,5 +279,8 @@ JWT_AUTH = {
     'JWT_PAYLOAD_HANDLER': 'FootballOnlineApi.utils.authenticate.jwt_payload_handler',
 }
 
+# django自定义认证
+AUTHENTICATION_BACKENDS = ['FootballOnlineApi.utils.authenticate.CustomAuthBackend', ]
+
 # 自定义用户模型
 AUTH_USER_MODEL = 'users.User'
