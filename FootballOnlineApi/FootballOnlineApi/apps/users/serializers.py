@@ -1,4 +1,6 @@
 import re, constants
+
+from django_redis import get_redis_connection
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 
@@ -45,8 +47,19 @@ class UserRegisterModelSerializer(serializers.ModelSerializer):
         except User.DoesNotExist:
             pass
 
-        # todo 验证短信验证码
+        # 验证短信验证码
+        redis = get_redis_connection("sms_code")
+        code = redis.get(f"sms_{mobile}")
+        if code is None:
+            """获取不多验证码，则表示验证码已经过期了"""
+            raise serializers.ValidationError(detail="验证码失效或已过期！", code="sms_code")
 
+        # 从redis提取的数据，字符串都是bytes类型，所以decode
+        if code.decode() != data.get("sms_code"):
+            raise serializers.ValidationError(detail="短信验证码错误！", code="sms_code")
+
+        # 删除掉redis中的短信，后续不管用户是否注册成功，至少当前这条短信验证码已经没有用处了
+        redis.delete(f"sms_{mobile}")
         return data
 
     def create(self, validated_data):

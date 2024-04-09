@@ -1,10 +1,10 @@
 <template>
   <div class="title">
     <span :class="{active:user.login_type==0}" @click="user.login_type=0">密码登录</span>
-    <span :class="{active:user.login_type==1}" @click="user.login_type=1">邮箱登录</span>
+    <span :class="{active:user.login_type==1}" @click="user.login_type=1">其他登录</span>
   </div>
   <div class="inp" v-if="user.login_type==0">
-    <input v-model="user.account" type="text" placeholder="用户名 / 邮箱" class="user">
+    <input v-model="user.account" type="text" placeholder="用户名 / 邮箱 / 电话" class="user">
     <input v-model="user.password" type="password" class="pwd" placeholder="密码">
     <div id="geetest1"></div>
     <div class="rember">
@@ -18,11 +18,7 @@
     <p class="go_login" >没有账号 <router-link to="/register">立即注册</router-link></p>
   </div>
   <div class="inp" v-show="user.login_type==1">
-    <input v-model="user.mobile" type="text" placeholder="邮箱地址" class="user">
-    <input v-model="user.code"  type="text" class="code" placeholder="邮箱验证码">
-    <el-button id="get_code" type="primary">获取验证码</el-button>
-    <button class="login_btn">登录</button>
-    <p class="go_login" >没有账号 <router-link to="/register">立即注册</router-link></p>
+    <p class="go_login" >微信登陆 | QQ登陆</p>
   </div>
 </template>
 
