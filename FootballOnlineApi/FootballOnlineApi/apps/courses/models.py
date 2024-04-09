@@ -1,5 +1,6 @@
 from FootballOnlineApi.utils.models import models, BaseModel
 from ckeditor_uploader.fields import RichTextUploadingField
+from ckeditor.fields import RichTextField
 
 
 # Create your models here.
@@ -160,7 +161,7 @@ class CourseLesson(BaseModel):
 
     def __str__(self):
         return "%s-第%s章-%s-第%s课时-%s" % (
-        self.course.name, self.chapter.orders, self.chapter.name, self.orders, self.name)
+            self.course.name, self.chapter.orders, self.chapter.name, self.orders, self.name)
 
     def text2(self):
         return self.__str__()

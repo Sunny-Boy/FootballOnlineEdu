@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'corsheaders',  # cors跨域子应用
 
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
     
     "home",
     "users",
