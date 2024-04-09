@@ -25,6 +25,9 @@ sys.path.insert(0, str(BASE_DIR / "utils"))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-#4wpy!qit+pkg7zf27vn$o$uos(w#9ee%3id-6m3yot-qmnou7'
 
+
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -239,7 +242,7 @@ LOGGING = {
             'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
             # 日志位置,日志文件名，日志保存目录logs必须手动创建
-            'filename': BASE_DIR.parent / "logs/luffycity.log",
+            'filename': BASE_DIR.parent / "logs/FootballOnlineApi.log",
             # 单个日志文件的最大值，这里我们设置300M
             'maxBytes': 300 * 1024 * 1024,
             # 备份日志文件的数量，设置最大日志数量为10
@@ -259,7 +262,7 @@ LOGGING = {
 # drf配置
 REST_FRAMEWORK = {
     # 自定义异常处理
-    'EXCEPTION_HANDLER': 'luffycityapi.utils.exceptions.exception_handler',
+    'EXCEPTION_HANDLER': 'FootballOnlineApi.utils.exceptions.exception_handler',
     # 自定义认证
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',  # jwt认证
@@ -284,3 +287,5 @@ AUTHENTICATION_BACKENDS = ['FootballOnlineApi.utils.authenticate.CustomAuthBacke
 
 # 自定义用户模型
 AUTH_USER_MODEL = 'users.User'
+
+

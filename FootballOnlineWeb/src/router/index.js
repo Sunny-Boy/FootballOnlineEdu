@@ -22,7 +22,8 @@ const routes = [
     component: ()=> import("../views/Login.vue")
 
 
-  },{
+  },
+    {
     meta:{
         title: "球学Online学习平台-个人中心",
         keepAlive: true,
@@ -30,6 +31,15 @@ const routes = [
     path: '/user',
     name: "User",
     component: ()=> import("../views/User.vue"),
+  },
+  {
+      meta:{
+        title: "球学Online学习平台--用户注册",
+        keepAlive: true
+      },
+      path: '/register',
+      name: "Register",            // 路由名称
+      component: ()=> import("../views/Register.vue"),         // uri绑定的组件页面
   },
 ]
 

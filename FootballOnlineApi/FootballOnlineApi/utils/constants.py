@@ -9,3 +9,5 @@ NAV_HEADER_SIZE = 5
 NAV_FOOTER_SIZE = 6
 # 轮播广告最大数量
 BANNER_SIZE = 10
+# 默认头像
+DEFAULT_USER_AVATAR = "avatar/2024/avatar.png"

@@ -3,7 +3,7 @@
         <img src="../assets/Loginbg.3377d0c.jpg" alt="">
         <div class="login">
             <div class="login-title">
-                <img src="../assets/logo.png" alt="">
+<!--                <img src="../assets/logo.png" alt="">-->
                 <p>还记得曾经那个在热日炎炎下练球的那个小孩嘛！</p>
             </div>
       <div class="login_box">
