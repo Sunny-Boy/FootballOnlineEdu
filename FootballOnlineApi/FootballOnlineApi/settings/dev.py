@@ -11,6 +11,26 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import sys
 from pathlib import Path
+from django.contrib import admin
+
+#后端站点管理
+admin.AdminSite.site_header = '球学Online后台管理'
+admin.AdminSite.site_title = '球学Online站点管理'
+# 登录界面logo
+SIMPLEUI_LOGO = '/uploads/logo.png'
+# 快速操作
+SIMPLEUI_HOME_QUICK = True
+# 服务器信息
+SIMPLEUI_HOME_INFO = False
+
+# 关闭simpleui内置的使用分析
+SIMPLEUI_ANALYSIS = False
+# 离线模式
+SIMPLEUI_STATIC_OFFLINE = True
+# 首页图标地址
+SIMPLEUI_INDEX = 'http://www.FootballOnline.cn:5173/'
+
+
 
 # 主应用目录
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,7 +66,8 @@ INSTALLED_APPS = [
 
     'ckeditor',
     'ckeditor_uploader',
-    
+    'stdimage',
+
     "home",
     "users",
     "courses",
