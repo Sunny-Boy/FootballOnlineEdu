@@ -93,6 +93,8 @@ nav.get_header_nav().then(response=>{
 const login_success = ()=>{
   state.show_login = false
 }
+
+//登陆注销处理
 const logout = ()=>{
   store.commit("logout");
 }
