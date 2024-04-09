@@ -33,6 +33,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',  # admin界面美化,必须写在admin上面
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +44,9 @@ INSTALLED_APPS = [
     "rest_framework",
     'corsheaders',  # cors跨域子应用
 
+    'ckeditor',
+    'ckeditor_uploader'
+    
     "home",
     "users",
     "courses",
@@ -168,9 +173,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -294,4 +299,25 @@ RONGLIANYUN = {
     "reg_tid": 1,  # 注册短信验证码的模板ID
     "sms_expire": 300,  # 短信有效期，单位：秒(s)
     "sms_interval": 60,  # 短信发送的冷却时间，单位：秒(s)
+}
+
+# 上传文件的存储路径
+CKEDITOR_UPLOAD_PATH = "ckeditor/"
+
+# 工具条配置
+CKEDITOR_CONFIGS = {
+    'default': {
+        # 'toolbar': 'full', # full 显示全部工具
+        # 'toolbar': 'Basic', # Basic 显示基本工具
+        'toolbar': 'Custom',  # 自定义工具条的显示数量
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline', 'Image', 'Styles', 'Format', 'Font', 'Fontsize'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter',
+             'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink', 'Table'],
+            ['RemoveFormat', 'Source']
+        ],
+        # 设置编辑器的高度
+        'height': 120,
+    },
 }
