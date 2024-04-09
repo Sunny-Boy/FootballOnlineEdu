@@ -25,9 +25,6 @@ sys.path.insert(0, str(BASE_DIR / "utils"))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-#4wpy!qit+pkg7zf27vn$o$uos(w#9ee%3id-6m3yot-qmnou7'
 
-
-
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -288,4 +285,12 @@ AUTHENTICATION_BACKENDS = ['FootballOnlineApi.utils.authenticate.CustomAuthBacke
 # 自定义用户模型
 AUTH_USER_MODEL = 'users.User'
 
-
+# 容联云短信
+RONGLIANYUN = {
+    "accId": '2c94811c8cd4da0a018ec13f871a556f',
+    "accToken": '42ac3653559246c68233af5613372cb4',
+    "appId": '2c94811c8cd4da0a018ec13f88ba5576',
+    "reg_tid": 1,  # 注册短信验证码的模板ID
+    "sms_expire": 300,  # 短信有效期，单位：秒(s)
+    "sms_interval": 60,  # 短信发送的冷却时间，单位：秒(s)
+}

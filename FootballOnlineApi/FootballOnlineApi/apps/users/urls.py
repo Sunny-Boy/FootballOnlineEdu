@@ -6,6 +6,7 @@ urlpatterns = [
     path("login/", obtain_jwt_token, name="login"),
     re_path(r"^mobile/(?P<mobile>1[3-9]\d{9})/$", views.MobileAPIView.as_view()),
     path("register/", views.UserAPIView.as_view()),
+    re_path(r"^sms/(?P<mobile>1[3-9]\d{9})/$", views.SMSAPIView.as_view()),
 ]
 
 # 登录视图，获取access_token
