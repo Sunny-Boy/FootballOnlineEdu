@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'corsheaders',  # cors跨域子应用
 
     "home",
-    "users"
+    "users",
+    "courses",
 
 ]
 
