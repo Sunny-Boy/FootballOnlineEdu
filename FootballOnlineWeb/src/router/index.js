@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router'
+import store from "../store";
 
 // 路由列表
 const routes = [
@@ -14,12 +15,32 @@ const routes = [
   {
     meta:{
         title: "球学Online学习平台--用户登陆",
-        keepAlive: false
+        keepAlive: true
     },
     path:'/login',      // uri访问地址
     name: "Login",
     component: ()=> import("../views/Login.vue")
-  }
+
+
+  },
+    {
+    meta:{
+        title: "球学Online学习平台-个人中心",
+        keepAlive: true,
+    },
+    path: '/user',
+    name: "User",
+    component: ()=> import("../views/User.vue"),
+  },
+  {
+      meta:{
+        title: "球学Online学习平台--用户注册",
+        keepAlive: true
+      },
+      path: '/register',
+      name: "Register",            // 路由名称
+      component: ()=> import("../views/Register.vue"),         // uri绑定的组件页面
+  },
 ]
 
 // 路由对象实例化
@@ -30,4 +51,14 @@ const router = createRouter({
 });
 
 
+// 导航守卫
+router.beforeEach((to, from, next)=>{
+  document.title=to.meta.title
+  // 登录状态验证
+  if (to.meta.authorization && !store.getters.getUserInfo) {
+    next({"name": "Login"})
+  }else{
+    next()
+  }
+})
 export default router

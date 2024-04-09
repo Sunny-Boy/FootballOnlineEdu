@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',  # cors跨域子应用
 
     "home",
+    "users"
 
 ]
 
@@ -238,7 +239,7 @@ LOGGING = {
             'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
             # 日志位置,日志文件名，日志保存目录logs必须手动创建
-            'filename': BASE_DIR.parent / "logs/luffycity.log",
+            'filename': BASE_DIR.parent / "logs/FootballOnlineApi.log",
             # 单个日志文件的最大值，这里我们设置300M
             'maxBytes': 300 * 1024 * 1024,
             # 备份日志文件的数量，设置最大日志数量为10
@@ -258,5 +259,38 @@ LOGGING = {
 # drf配置
 REST_FRAMEWORK = {
     # 自定义异常处理
-    'EXCEPTION_HANDLER': 'FootballOnlineApi.utils.exceptions.custom_exception_handler',
+    'EXCEPTION_HANDLER': 'FootballOnlineApi.utils.exceptions.exception_handler',
+    # 自定义认证
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',  # jwt认证
+        'rest_framework.authentication.SessionAuthentication',  # session认证
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
+import datetime
+
+# jwt认证相关配置项
+JWT_AUTH = {
+    # 设置jwt的有效期
+    # 如果内部站点，例如：运维开发系统，OA，往往配置的access_token有效期基本就是15分钟，30分钟，1~2个小时
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(weeks=1),  # 一周有效，
+    # 自定义载荷
+    'JWT_PAYLOAD_HANDLER': 'FootballOnlineApi.utils.authenticate.jwt_payload_handler',
+}
+
+# django自定义认证
+AUTHENTICATION_BACKENDS = ['FootballOnlineApi.utils.authenticate.CustomAuthBackend', ]
+
+# 自定义用户模型
+AUTH_USER_MODEL = 'users.User'
+
+# 容联云短信
+RONGLIANYUN = {
+    "accId": '2c94811c8cd4da0a018ec13f871a556f',
+    "accToken": '42ac3653559246c68233af5613372cb4',
+    "appId": '2c94811c8cd4da0a018ec13f88ba5576',
+    "reg_tid": 1,  # 注册短信验证码的模板ID
+    "sms_expire": 300,  # 短信有效期，单位：秒(s)
+    "sms_interval": 60,  # 短信发送的冷却时间，单位：秒(s)
 }
