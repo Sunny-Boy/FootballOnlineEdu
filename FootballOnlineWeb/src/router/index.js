@@ -41,6 +41,15 @@ const routes = [
       name: "Register",            // 路由名称
       component: ()=> import("../views/Register.vue"),         // uri绑定的组件页面
   },
+    {
+    meta:{
+        title: "球学Online学习平台--课程列表",
+        keepAlive: true,
+    },
+    path: '/project',
+    name: "Course",
+    component: ()=> import("../views/Course.vue"),
+  },
 ]
 
 // 路由对象实例化
